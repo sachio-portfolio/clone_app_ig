@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  mount_uploader :image, ImageUploader
   before_action :set_user, only: %i[ show edit update destroy ]
 
   def index
@@ -46,6 +45,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
   def user_params
-    params.require(:user).permit(:name, :email, :image, :image_cache)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :image, :image_cache)
   end
 end

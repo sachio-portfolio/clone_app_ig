@@ -1,5 +1,4 @@
 class PicturesController < ApplicationController
-  mount_uploader :image, ImageUploader
   before_action :set_picture, only: %i[ show edit update destroy ]
 
   def index
