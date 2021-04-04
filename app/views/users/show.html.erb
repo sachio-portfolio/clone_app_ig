@@ -1,5 +1,9 @@
 <p id="notice"><%= notice %></p>
 <p>
+  <strong>Avatar:</strong>
+  <%= image_tag @user.avatar.url, height: 50 %>
+</p>
+<p>
   <strong>Name:</strong>
   <%= @user.name %>
 </p>

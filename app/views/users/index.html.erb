@@ -5,15 +5,17 @@
 <table>
   <thead>
     <tr>
+      <th></th>
       <th>Name</th>
       <th>Email</th>
-      <th colspan="3"></th>
+      <th colspan="4"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @users.each do |user| %>
       <tr>
+        <td><%= image_tag user.avatar.url,height: 40 %></td>
         <td><%= user.name %></td>
         <td><%= user.email %></td>
         <td><%= link_to 'Show', user %></td>
