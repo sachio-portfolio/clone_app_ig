@@ -1,11 +1,20 @@
 <p id="notice"><%= notice %></p>
 <p>
+  <strong>Avatar:</strong>
+  <%= image_tag @user.avatar.url, height: 50 %>
+</p>
+<p>
   <strong>Name:</strong>
   <%= @user.name %>
 </p>
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'プロフィールの編集', edit_user_path(@user) %>
+<br>
+<div class="">
+  <% @pictures.each do |picture| %>
+  <div class="">
+    <%= image_tag picture.image.thumb.url %><br>
+  </div>
+  <% end %>
+</div>
+<br>
 <%= link_to 'Back', users_path %>

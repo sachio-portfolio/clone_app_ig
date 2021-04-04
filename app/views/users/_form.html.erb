@@ -2,7 +2,6 @@
   <% if user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
       <ul>
       <% user.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -10,27 +9,22 @@
       </ul>
     </div>
   <% end %>
-
   <div class="field">
-    <%= f.file_field :image, placeholder: "名前" %>
+    <%= image_tag @user.avatar.url if @user.avatar? %>
+    <%= f.file_field :avatar %>
   </div>
-
   <div class="field">
     <%= f.text_field :name, placeholder: "名前" %>
   </div>
-
   <div class="field">
     <%= f.text_field :email, placeholder: "メールアドレス" %>
   </div>
-
   <div class="field">
     <%= f.password_field :password, placeholder: "パスワード" %>
   </div>
-
   <div class="field">
     <%= f.password_field :password_confirmation, placeholder: "パスワード再入力" %>
   </div>
-
   <div class="actions">
     <%= f.submit "アカウント登録" %>
   </div>
