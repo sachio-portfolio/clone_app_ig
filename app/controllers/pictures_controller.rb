@@ -13,8 +13,6 @@ class PicturesController < ApplicationController
       @picture = current_user.pictures.new
     end
   end
-  def edit
-  end
   def create
     @picture = current_user.pictures.build(picture_params)
     if params[:back]
@@ -27,6 +25,8 @@ class PicturesController < ApplicationController
         render :new
       end
     end
+  end
+  def edit
   end
   def update
     if @picture.update(picture_params)
