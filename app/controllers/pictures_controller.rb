@@ -1,5 +1,6 @@
 class PicturesController < ApplicationController
   before_action :set_picture, only: %i[ show edit update destroy ]
+  include PicturesHelper
 
   def index
     @pictures = Picture.all
@@ -35,6 +36,10 @@ class PicturesController < ApplicationController
     else
       render :edit
     end
+  end
+  def confirm
+    @picture = current_user.pictures.new(picture_params)
+    render :new if @picture.invalid?
   end
   def destroy
     @picture.destroy
