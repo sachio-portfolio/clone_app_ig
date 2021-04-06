@@ -1,16 +1,7 @@
 <p id="notice"><%= notice %></p>
-
 <h1>Users</h1>
-
+<h6><strong>おすすめ</strong></h6>
 <table>
-  <thead>
-    <tr>
-      <th></th>
-      <th>Name</th>
-      <th colspan="4"></th>
-    </tr>
-  </thead>
-
   <tbody>
     <% @users.each do |user| %>
       <tr>
@@ -20,7 +11,6 @@
     <% end %>
   </tbody>
 </table>
-
 <br>
 
-<%= link_to 'New User', new_user_path %>
+<%= link_to 'Photo Gallery', pictures_path %>
