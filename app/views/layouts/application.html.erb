@@ -10,10 +10,13 @@
     <script src="https://kit.fontawesome.com/27e4cb0d9e.js" crossorigin="anonymous"></script>
   </head>
   <body>
-    <header>
+    <header class="sticky-top">
       <% if logged_in? %>
-        <%= link_to pictures_path, class: "header_icon" ,method: :get do %>
-          <i class="fas fa-home"></i>
+        <%= link_to new_picture_path, class: "header_icon" ,method: :get do %>
+          <i class="far fa-plus-square"></i>
+        <% end %>
+        <%= link_to favorites_path, class: "header_icon", method: :get do %>
+          <i class="far fa-heart"></i>
         <% end %>
         <%= link_to users_path, class: "header_icon", method: :get do %>
           <i class="far fa-compass"></i>
@@ -33,9 +36,30 @@
         <% end %>
       <% end %>
     </header>
-    <% flash.each do |key, value| %>
-      <%= content_tag(:div, value, class: "#{key}") %>
-    <% end %>
-    <%= yield %>
+    <div class="main">
+      <% flash.each do |key, value| %>
+        <%= content_tag(:div, value, class: "#{key}") %>
+      <% end %>
+      <%= yield %>
+    </div>
+    <footer class="fixed-bottom">
+      <% if logged_in? %>
+        <%= link_to pictures_path, class: "header_icon" ,method: :get do %>
+          <i class="fas fa-home"></i>
+        <% end %>
+        <span class="header_icon">
+          <i class="fas fa-search"></i>
+        </span>
+        <span class="header_icon">
+          <i class="far fa-play-circle"></i>
+        </span>
+        <span class="header_icon">
+          <i class="fas fa-shopping-bag"></i>
+        </span>
+        <%= link_to user_path(current_user.id), class: "header_icon", method: :get do %>
+          <i class="fas fa-user-circle"></i>
+        <% end %>
+      <% end %>
+    </footer>
   </body>
 </html>

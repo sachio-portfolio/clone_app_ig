@@ -1,15 +1,5 @@
 <p id="notice"><%= notice %></p>
-
-<h1>Photo Gallery</h1>
-
-<table>
-  <tbody>
-    <% @pictures.each do |picture| %>
-      <tr>
-        <td><%= link_to image_tag(picture.image.thumb.url), picture %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<% @pictures.each do |picture| %>
+    <%= link_to image_tag(picture.image.thumb.url), picture %>
+<% end %>
 <br>
-<%= link_to 'New Picture', new_picture_path %>
