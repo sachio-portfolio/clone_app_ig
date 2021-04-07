@@ -21,12 +21,16 @@
         <%= link_to user_path(current_user.id), class: "header_icon", method: :get do %>
           <i class="fas fa-user-circle"></i>
         <% end %>
-        <%= link_to session_path(current_user.id), class: "header_icon_logout", method: :delete do %>
+        <%= link_to session_path(current_user.id), class: "header_icon_value", method: :delete do %>
           <i class="fas fa-sign-out-alt"> LOGOUT</i>
         <% end %>
       <% else %>
-        <%= link_to "Sign up", new_user_path %>
-        <%= link_to "Login", new_session_path %>
+        <%= link_to new_user_path,class: "header_icon_value", method: :get do  %>
+          <i class="fas fa-user-plus"></i> SIGNUP
+        <% end %>
+        <%= link_to new_session_path, class: "header_icon_value", method: :get do %>
+          <i class="fas fa-sign-in-alt"></i> LOGIN
+        <% end %>
       <% end %>
     </header>
     <% flash.each do |key, value| %>
