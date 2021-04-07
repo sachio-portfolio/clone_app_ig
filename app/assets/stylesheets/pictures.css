@@ -1,0 +1,37 @@
+body {
+  background-color: #000000;
+  color: #dee2e6;
+  margin-bottom: auto!important;
+}
+
+header {
+  height: 50px;
+  background-color: #000000;
+  box-shadow: 0px 1px 1px 0px #B6B6B6;
+}
+
+body .header_icon {
+  font-size: 1.8rem;
+}
+
+body .header_icon_value {
+  font-size: 0.8rem;
+  padding: 3px;
+  border: solid 1px;
+  border-radius: 2px;
+  margin: auto;
+}
+
+a {
+  color: #dee2e6;
+}
+
+.main {
+  margin-bottom: 80px;
+}
+
+footer {
+  height: 50px;
+  background-color: #000000;
+  /* border-top: 1px solid #B6B6B6; */
+}

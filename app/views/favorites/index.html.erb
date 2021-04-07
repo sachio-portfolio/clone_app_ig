@@ -1,0 +1,6 @@
+<h1>FAVORITE LIST <i class="far fa-heart"></i></h1>
+<% @favorites.each do |favorite| %>
+  <%= link_to image_tag(favorite.picture.image.thumb.url), picture_path(favorite.picture.id) %>
+<% end %>
+<br>
+<%= link_to 'BACK', pictures_path %>

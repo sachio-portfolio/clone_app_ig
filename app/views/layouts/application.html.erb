@@ -7,18 +7,59 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/27e4cb0d9e.js" crossorigin="anonymous"></script>
   </head>
   <body>
-    <% flash.each do |key, value| %>
-      <%= content_tag(:div, value, class: "#{key}") %>
-    <% end %>
-    <% if logged_in? %>
-      <%= link_to "Profile", user_path(current_user.id) %>
-      <%= link_to "Logout", session_path(current_user.id), method: :delete %>
-    <% else %>
-      <%= link_to "Sign up", new_user_path %>
-      <%= link_to "Login", new_session_path %>
-    <% end %>
-    <%= yield %>
+    <header class="sticky-top">
+      <% if logged_in? %>
+        <%= link_to new_picture_path, class: "header_icon" ,method: :get do %>
+          <i class="far fa-plus-square"></i>
+        <% end %>
+        <%= link_to favorites_path, class: "header_icon", method: :get do %>
+          <i class="far fa-heart"></i>
+        <% end %>
+        <%= link_to users_path, class: "header_icon", method: :get do %>
+          <i class="far fa-compass"></i>
+        <% end %>
+        <%= link_to user_path(current_user.id), class: "header_icon", method: :get do %>
+          <i class="fas fa-user-circle"></i>
+        <% end %>
+        <%= link_to session_path(current_user.id), class: "header_icon_value", method: :delete do %>
+          <i class="fas fa-sign-out-alt"> LOGOUT</i>
+        <% end %>
+      <% else %>
+        <%= link_to new_user_path,class: "header_icon_value", method: :get do  %>
+          <i class="fas fa-user-plus"></i> SIGNUP
+        <% end %>
+        <%= link_to new_session_path, class: "header_icon_value", method: :get do %>
+          <i class="fas fa-sign-in-alt"></i> LOGIN
+        <% end %>
+      <% end %>
+    </header>
+    <div class="main">
+      <% flash.each do |key, value| %>
+        <%= content_tag(:div, value, class: "#{key}") %>
+      <% end %>
+      <%= yield %>
+    </div>
+    <footer class="fixed-bottom">
+      <% if logged_in? %>
+        <%= link_to pictures_path, class: "header_icon" ,method: :get do %>
+          <i class="fas fa-home"></i>
+        <% end %>
+        <span class="header_icon">
+          <i class="fas fa-search"></i>
+        </span>
+        <span class="header_icon">
+          <i class="far fa-play-circle"></i>
+        </span>
+        <span class="header_icon">
+          <i class="fas fa-shopping-bag"></i>
+        </span>
+        <%= link_to user_path(current_user.id), class: "header_icon", method: :get do %>
+          <i class="fas fa-user-circle"></i>
+        <% end %>
+      <% end %>
+    </footer>
   </body>
 </html>
