@@ -9,13 +9,20 @@
       </ul>
     </div>
   <% end %>
+  <div class="show_user">
+    <% if current_user.avatar? %>
+      <%= image_tag current_user.avatar.thumb.url, class: "avatar_img" %>
+    <% else %>
+      <%= image_tag "/assets/thumb_default02.png", class: "default_avatar img-fluid" %>
+    <% end %>
+    <%= current_user.name %>
+  </div>
   <div class="field">
-    <%= f.label :image %>
+    <%= image_tag @picture.image.url, class: "picture_img img-fluid" if @picture.image? %>
     <%= f.file_field :image %>
   </div>
   <div class="field">
-    <%= f.label :content %>
-    <%= f.text_area :content %>
+    <%= f.text_area :content, placeholder: "キャプションを入力…", class: "text_entry" %>
   </div>
   <div class="actions">
     <%= f.submit %>

@@ -1,16 +1,29 @@
-<p id="notice"><%= notice %></p>
-<h1>Users</h1>
-<h6><strong>おすすめ</strong></h6>
-<table>
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= image_tag user.avatar.thumb.url %></td>
-        <td><%= link_to user.name, user %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<br>
-
-<%= link_to 'Photo Gallery', pictures_path %>
+<div class="col-xs-12 col-md-2">
+</div>
+<div class="col-xs-12 col-sm-8 col-md-8">
+  <h1 class="mt-3">USERS</h1>
+  <h6><strong>おすすめ</strong></h6>
+  <% @users.each do |user| %>
+  <div class="card-body">
+    <div class="d-flex bd-highlight">
+      <div class="p-2 flex-grow-1 bd-highlight">
+        <% if user.avatar? %>
+          <%= image_tag user.avatar.thumb.url, class: "avatar_img img-fluid" %>
+        <% else %>
+          <%= image_tag "/assets/thumb_default02.png", class: "default_avatar img-fluid" %>
+        <% end %>
+        <%= link_to user.name, user %>
+      </div>
+      <div class="p-2 bd-highlight align-self-center">
+        <%= link_to user do %>
+          <i class="fas fa-camera-retro"></i>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+  <br>
+  <%= link_to 'Photo Gallery', pictures_path %>
+</div>
+<div class="col-xs-12 col-md-2">
+</div>

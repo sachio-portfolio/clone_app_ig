@@ -1,24 +1,37 @@
-<p id="notice"><%= notice %></p>
-
-<%= image_tag @picture.image.url %><br>
-<strong><%= @picture.user.name %></strong>
-<%= @picture.content %><br>
-<small><%= @picture.updated_at.strftime("%Y-%m-%d") %></small>
-<% unless @picture.user_id == current_user.id %>
-  <% if @favorite.present? %>
-    <%= link_to favorite_path(id: @favorite.id), method: :delete do %>
-      <i class="fas fa-heart"></i>
+<div class="col-xs-12 col-md-2">
+</div>
+<div class="col-xs-12 col-sm-8 col-md-4 show_picture">
+  <%= image_tag @picture.image.url, class: "img-fluid" %><br>
+</div>
+<div class="col-xs-12 col-md-3 show_picture">
+  <div class="show_user">
+    <% if current_user.avatar? %>
+      <%= image_tag @picture.user.avatar.thumb.url, class: "avatar_img" %>
+    <% else %>
+      <%= image_tag "/assets/thumb_default02.png", class: "default_avatar img-fluid" %>
     <% end %>
-  <% else %>
-    <%= link_to favorites_path(picture_id: @picture.id), method: :post do%>
-      <i class="far fa-heart"></i>
+    <strong><%= @picture.user.name %></strong>
+  </div>
+  <%= @picture.content %><br>
+  <small><%= @picture.updated_at.strftime("%Y-%m-%d") %></small>
+  <% unless @picture.user_id == current_user.id %>
+    <% if @favorite.present? %>
+      <%= link_to favorite_path(id: @favorite.id), method: :delete do %>
+        <i class="fas fa-heart"><small> <%= @picture.favorite_users.count %></small></i>
+      <% end %>
+    <% else %>
+      <%= link_to favorites_path(picture_id: @picture.id), method: :post do%>
+        <i class="far fa-heart"><small> <%= @picture.favorite_users.count %></small></i>
+      <% end %>
     <% end %>
   <% end %>
-<% end %>
-<br>
-<br>
-<% if @picture.user_id == current_user.id %>
-  <%= link_to 'EDIT', edit_picture_path(@picture) %> |
-  <%= link_to 'DELETE', picture_path, method: :delete, data: { confirm: 'Are you sure?' } %>
-<% end %><br>
-<%= link_to 'BACK', pictures_path %>
+  <br>
+  <br>
+  <% if @picture.user_id == current_user.id %>
+    <%= link_to 'EDIT', edit_picture_path(@picture) %> |
+    <%= link_to 'DELETE', picture_path, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %><br>
+  <%= link_to 'BACK', pictures_path %>
+</div>
+<div class="col-xs-12 col-md-3">
+</div>
