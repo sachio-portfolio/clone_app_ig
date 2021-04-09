@@ -1,20 +1,32 @@
-<p id="notice"><%= notice %></p>
-<p>
-  <strong>Avatar:</strong>
-  <%= image_tag @user.avatar.url, height: 50 %>
-</p>
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
-<%= link_to 'プロフィールの編集', edit_user_path(@user) %>
-<br>
-<div class="">
-  <% @pictures.each do |picture| %>
-  <div class="">
-    <%= link_to image_tag(picture.image.thumb.url), picture %><br>
-  </div>
-  <% end %>
+<div class="col-xs-12 col-md-2">
 </div>
-<br>
-<%= link_to 'Back', users_path %>
+<div class="col-xs-12 col-sm-8 col-md-8">
+  <p id="notice"><%= notice %></p>
+  <div class="row">
+    <div class="col-xs-12 col-sm-3 col-md-3">
+      <% if @user.avatar? %>
+        <%= image_tag @user.avatar.url, class: "avatar_img img-fluid" %>
+      <% else %>
+        <%= image_tag "/assets/default.png", class: "default_avatar img-fluid" %>
+      <% end %>
+      <br>
+    </div>
+    <div class="col-xs-12 col-sm-9 col-md-9">
+      <p class="user_name">
+        <%= @user.name %>
+      </p>
+      <%= link_to edit_user_path(@user), class: "icon_value", method: :get do %>
+        <i class="fas fa-user-edit"> プロフィールを編集</i>
+      <% end %>
+    </div>
+  </div>
+  <div class="picture_index">
+    <% @pictures.each do |picture| %>
+      <%= link_to image_tag(picture.image.thumb.url), picture %>
+    <% end %>
+  </div>
+  <br>
+  <%= link_to 'Back', users_path %>
+</div>
+<div class="col-xs-12 col-md-2">
+</div>

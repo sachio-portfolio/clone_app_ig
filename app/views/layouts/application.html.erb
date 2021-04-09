@@ -11,55 +11,81 @@
   </head>
   <body>
     <header class="sticky-top">
-      <% if logged_in? %>
-        <%= link_to new_picture_path, class: "header_icon" ,method: :get do %>
-          <i class="far fa-plus-square"></i>
-        <% end %>
-        <%= link_to favorites_path, class: "header_icon", method: :get do %>
-          <i class="far fa-heart"></i>
-        <% end %>
-        <%= link_to users_path, class: "header_icon", method: :get do %>
-          <i class="far fa-compass"></i>
-        <% end %>
-        <%= link_to user_path(current_user.id), class: "header_icon", method: :get do %>
-          <i class="fas fa-user-circle"></i>
-        <% end %>
-        <%= link_to session_path(current_user.id), class: "header_icon_value", method: :delete do %>
-          <i class="fas fa-sign-out-alt"> LOGOUT</i>
-        <% end %>
-      <% else %>
-        <%= link_to new_user_path,class: "header_icon_value", method: :get do  %>
-          <i class="fas fa-user-plus"></i> SIGNUP
-        <% end %>
-        <%= link_to new_session_path, class: "header_icon_value", method: :get do %>
-          <i class="fas fa-sign-in-alt"></i> LOGIN
-        <% end %>
-      <% end %>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-xs-12 col-md-2">
+          </div>
+          <div class="col-xs-12 col-sm-8 col-md-8">
+            <div class="d-flex bd-highlight">
+              <div class="mr-auto bd-highlight align-self-center">
+                <%= image_tag "/assets/IG_logo.png", height: 35 %>
+              </div>
+              <div class="mt-1 p-2 bd-highlight align-self-center">
+                <% if logged_in? %>
+                  <%= link_to new_picture_path, class: "header_icon" ,method: :get do %>
+                    <i class="far fa-plus-square"></i>
+                  <% end %>
+                  <%= link_to favorites_path, class: "header_icon", method: :get do %>
+                    <i class="far fa-heart"></i>
+                  <% end %>
+                  <%= link_to users_path, class: "header_icon", method: :get do %>
+                    <i class="far fa-compass"></i>
+                  <% end %>
+                  <%= link_to user_path(current_user.id), class: "header_icon", method: :get do %>
+                    <i class="fas fa-user-circle"></i>
+                  <% end %>
+                  <%= link_to session_path(current_user.id), class: "header_icon_value ml-2 mb-2", method: :delete do %>
+                    <i class="fas fa-sign-out-alt"> LOGOUT</i>
+                  <% end %>
+                <% else %>
+                  <%= link_to new_user_path,class: "header_icon_value", method: :get do  %>
+                    <i class="fas fa-user-plus"></i> SIGNUP
+                  <% end %>
+                  <%= link_to new_session_path, class: "header_icon_value", method: :get do %>
+                    <i class="fas fa-sign-in-alt"></i> LOGIN
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-md-2">
+          </div>
+        </div>
+      </div>
     </header>
-    <div class="main">
-      <% flash.each do |key, value| %>
-        <%= content_tag(:div, value, class: "#{key}") %>
-      <% end %>
-      <%= yield %>
+    <div class="container-fluid">
+      <div class="row main">
+        <%= yield %>
+      </div>
     </div>
     <footer class="fixed-bottom">
-      <% if logged_in? %>
-        <%= link_to pictures_path, class: "header_icon" ,method: :get do %>
-          <i class="fas fa-home"></i>
-        <% end %>
-        <span class="header_icon">
-          <i class="fas fa-search"></i>
-        </span>
-        <span class="header_icon">
-          <i class="far fa-play-circle"></i>
-        </span>
-        <span class="header_icon">
-          <i class="fas fa-shopping-bag"></i>
-        </span>
-        <%= link_to user_path(current_user.id), class: "header_icon", method: :get do %>
-          <i class="fas fa-user-circle"></i>
-        <% end %>
-      <% end %>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-xs-12 col-md-2">
+          </div>
+          <div class="col-xs-12 col-sm-8 col-md-8 d-flex justify-content-around">
+            <% if logged_in? %>
+              <%= link_to pictures_path, class: "header_icon  align-self-center" ,method: :get do %>
+                <i class="fas fa-home"></i>
+              <% end %>
+              <span class="header_icon">
+                <i class="fas fa-search"></i>
+              </span>
+              <span class="header_icon">
+                <i class="far fa-play-circle"></i>
+              </span>
+              <span class="header_icon">
+                <i class="fas fa-shopping-bag"></i>
+              </span>
+              <%= link_to user_path(current_user.id), class: "header_icon align-self-center", method: :get do %>
+                <i class="fas fa-user-circle"></i>
+              <% end %>
+            <% end %>
+          </div>
+          <div class="col-xs-12 col-md-2">
+          </div>
+        </div>
+      </div>
     </footer>
   </body>
 </html>
