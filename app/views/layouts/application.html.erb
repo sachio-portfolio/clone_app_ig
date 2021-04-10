@@ -6,6 +6,7 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://kit.fontawesome.com/27e4cb0d9e.js" crossorigin="anonymous"></script>
   </head>
@@ -18,18 +19,18 @@
           <div class="col-xs-12 col-sm-8 col-md-8">
             <div class="d-flex bd-highlight">
               <div class="mr-auto bd-highlight align-self-center">
-                <%= image_tag "/assets/IG_logo.png", height: 35 %>
+                <%= link_to image_tag("/assets/IG_logo.png", height: 45), pictures_path %>
               </div>
-              <div class="mt-1 p-2 bd-highlight align-self-center">
+              <div class="mt-1 p-3 bd-highlight align-self-center">
                 <% if logged_in? %>
                   <%= link_to new_picture_path, class: "header_icon" ,method: :get do %>
                     <i class="far fa-plus-square"></i>
                   <% end %>
-                  <%= link_to favorites_path, class: "header_icon", method: :get do %>
-                    <i class="far fa-heart"></i>
-                  <% end %>
                   <%= link_to users_path, class: "header_icon", method: :get do %>
                     <i class="far fa-compass"></i>
+                  <% end %>
+                  <%= link_to favorites_path, class: "header_icon", method: :get do %>
+                    <i class="far fa-heart"></i>
                   <% end %>
                   <%= link_to user_path(current_user.id), class: "header_icon", method: :get do %>
                     <i class="fas fa-user-circle"></i>
@@ -41,7 +42,7 @@
                   <%= link_to new_user_path,class: "header_icon_value", method: :get do  %>
                     <i class="fas fa-user-plus"></i> SIGNUP
                   <% end %>
-                  <%= link_to new_session_path, class: "header_icon_value", method: :get do %>
+                  <%= link_to new_session_path, class: "ml-2 header_icon_value", method: :get do %>
                     <i class="fas fa-sign-in-alt"></i> LOGIN
                   <% end %>
                 <% end %>

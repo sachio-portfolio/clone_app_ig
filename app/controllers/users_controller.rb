@@ -5,7 +5,7 @@ class UsersController < ApplicationController
     @users = User.all
   end
   def show
-    @pictures = @user.pictures.all
+    @pictures = @user.pictures.all.order("id DESC")
   end
   def new
     @user = User.new

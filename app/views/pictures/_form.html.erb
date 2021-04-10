@@ -18,8 +18,28 @@
     <%= current_user.name %>
   </div>
   <div class="field">
-    <%= image_tag @picture.image.url, class: "picture_img img-fluid" if @picture.image? %>
-    <%= f.file_field :image %>
+    <% if @picture.image? %>
+      <%= image_tag @picture.image.url, class: "picture_img img-fluid", id: "img_prev" %>
+    <% else %>
+      <%= image_tag "/assets/default_image.png", class: "picture_img img-fluid", id: "img_prev" %>
+    <% end %>
+    <%= f.file_field :image, id: "select_img" %>
+    <script type="text/javascript">
+    $(function() {
+      function readURL(input) {
+        if (input.files && input.files[0]) {
+          let reader = new FileReader();
+          reader.onload = function (e) {
+            $('#img_prev').attr('src', e.target.result);
+          }
+          reader.readAsDataURL(input.files[0]);
+        }
+      }
+      $("#select_img").change(function(){
+        readURL(this);
+      });
+    });
+    </script>
   </div>
   <div class="field">
     <%= f.text_area :content, placeholder: "キャプションを入力…", class: "text_entry" %>

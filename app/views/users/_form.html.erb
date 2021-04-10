@@ -10,17 +10,29 @@
     </div>
   <% end %>
   <div class="user_profile card-body">
-    <div class="row field">
-      <div class="col-xs-12 col-sm-3 col-md-3">
-        <% if @user.avatar? %>
-          <%= image_tag @user.avatar.url, class: "avatar_img img-fluid" %>
-        <% else %>
-          <%= image_tag "/assets/default.png", class: "default_avatar img-fluid" %>
-        <% end %>
-      </div>
-      <div class="col-xs-12 col-sm-9 col-md-9 mt-5">
-        <%= f.file_field :avatar %>
-      </div>
+    <div class="field">
+      <% if @user.avatar? %>
+        <%= image_tag @user.avatar.url, height: 200, class: "img-fluid", id: "img_prev" %>
+      <% else %>
+        <%= image_tag "/assets/default.png", class: "default_avatar img-fluid", id: "img_prev" %>
+      <% end %>
+      <%= f.file_field :avatar, id: "select_img" %>
+      <script type="text/javascript">
+      $(function() {
+        function readURL(input) {
+          if (input.files && input.files[0]) {
+            let reader = new FileReader();
+            reader.onload = function (e) {
+              $('#img_prev').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+          }
+        }
+        $("#select_img").change(function(){
+          readURL(this);
+        });
+      });
+      </script>
     </div>
     <div class="input-group mt-5 mb-3">
       <div class="input-group-prepend">
