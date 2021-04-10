@@ -15,8 +15,10 @@
       <p class="user_name">
         <%= @user.name %>
       </p>
-      <%= link_to edit_user_path(@user), class: "icon_value", method: :get do %>
+      <% if @user.id == current_user.id %>
+        <%= link_to edit_user_path(@user), class: "icon_value", method: :get do %>
         <i class="fas fa-user-edit"> プロフィールを編集</i>
+        <% end %>
       <% end %>
     </div>
   </div>

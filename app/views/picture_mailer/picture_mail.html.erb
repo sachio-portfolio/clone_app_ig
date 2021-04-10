@@ -1,0 +1,5 @@
+<h1>投稿が完了しました！</h1>
+<h4>name: <%= @picture.user.name %></h4>
+<h4>投稿内容</h4>
+<%= image_tag @picture.image.thumb.url %>
+<p><%= @picture.content if @picture.content? %></p>

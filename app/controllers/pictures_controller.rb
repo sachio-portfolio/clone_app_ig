@@ -21,8 +21,9 @@ class PicturesController < ApplicationController
       render :new
     else
       if @picture.save
+        PictureMailer.picture_mail(@picture).deliver
         redirect_to user_path(current_user.id)
-        flash.now[:notice] = "Picture was successfully created."
+        flash[:notice] = "Picture was successfully created."
       else
         render :new
       end
