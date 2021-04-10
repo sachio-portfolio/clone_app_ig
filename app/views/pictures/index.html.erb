@@ -4,7 +4,14 @@
   <p id="notice"><%= notice %></p>
   <div class="picture_index">
     <% @pictures.each do |picture| %>
-      <%= link_to image_tag(picture.image.thumb.url, class: "img-fluid"), picture %>
+      <div class="hover_parent">
+        <%= link_to image_tag(picture.image.thumb.url, class: "img-fluid"), picture %>
+        <div class="hover_mask">
+          <%= link_to picture_path(picture.id), class: "hover_link" do %>
+            <i class="fas fa-heart caption"> <%= picture.favorite_users.count %></i>
+          <% end %>
+        </div>
+      </div>
     <% end %>
   </div>
 </div>

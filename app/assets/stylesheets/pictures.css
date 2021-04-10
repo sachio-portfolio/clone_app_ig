@@ -22,6 +22,7 @@ body .header_icon_value {
 a {
   color: #dee2e6;
   line-height: 0;
+  text-decoration: none;
 }
 .picture_index {
   margin-top: 35px;
@@ -81,4 +82,41 @@ body .icon_value {
 }
 #select_img {
   margin-top: 10px;
+}
+.hover_parent {
+  width: 300px;
+  height: 300px;
+  position: relative;
+  overflow: hidden;
+}
+.hover_mask {
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+}
+.hover_parent:hover .hover_mask {
+  opacity: 1;
+}
+.hover_mask .caption {
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hover_mask .caption:hover {
+  color: #dee2e6;
 }

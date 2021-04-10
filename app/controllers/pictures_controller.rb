@@ -3,7 +3,7 @@ class PicturesController < ApplicationController
   include PicturesHelper
 
   def index
-    @pictures = Picture.all
+    @pictures = Picture.all.order("id DESC")
   end
   def show
     @favorite = current_user.favorites.find_by(picture_id: @picture.id)
