@@ -84,10 +84,12 @@ body .icon_value {
   margin-top: 10px;
 }
 .hover_parent {
-  width: 300px;
-  height: 300px;
+  width: 100%;
+  height: auto;
   position: relative;
   overflow: hidden;
+  margin-right: 4px;
+  display: block;
 }
 .hover_mask {
   width: 100%;
