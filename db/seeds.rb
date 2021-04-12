@@ -10,7 +10,7 @@
   name = Faker::Creature::Dog.breed
   email = Faker::Internet.email
   password = "password"
-  avatar = open("#{Rails.root}/db/samples/avt#{n}.jpg")
+  avatar = open("./public/samples/avt#{n}.jpg")
   User.create!(name: name,
               email: email,
               password: password,
