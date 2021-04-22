@@ -33,6 +33,8 @@ group :development, :test do
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
   gem 'capistrano3-unicorn'
+  gem 'ed25519'  # NotImplementedError: OpenSSH keys only supported if ED25519 is availableへの対応
+  gem 'bcrypt_pbkdf'
 end
 
 group :development do
