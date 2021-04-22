@@ -8,9 +8,9 @@
     <div class="d-flex bd-highlight">
       <div class="p-2 flex-grow-1 bd-highlight">
         <% if user.avatar? %>
-          <%= image_tag user.avatar.thumb.url, class: "avatar_img img-fluid" %>
+          <%= image_tag(user.avatar.thumb.url, class: "avatar_img img-fluid") %>
         <% else %>
-          <%= image_tag "/assets/thumb_default02.png", class: "default_avatar img-fluid" %>
+          <%= image_tag("thumb_default02.png", class: "default_avatar img-fluid") %>
         <% end %>
         <%= link_to user.name, user %>
       </div>
